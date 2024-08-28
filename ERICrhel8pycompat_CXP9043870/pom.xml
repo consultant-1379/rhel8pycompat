@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ericsson.oss.itpf.common</groupId>
+    <artifactId>rhel8pycompat</artifactId>
+    <version>1.1.4-SNAPSHOT</version>
+  </parent>
+  <groupId>com.ericsson.oss.itpf.common</groupId>
+  <artifactId>ERICrhel8pycompat_CXP9043870</artifactId>
+  <packaging>${rpm.packaging}</packaging>
+  <name>rhel8pycompat feature CXP module</name>
+  <properties>
+    <com.ericsson.oss.rpm.architecture>noarch</com.ericsson.oss.rpm.architecture>
+    <rpm-root>opt</rpm-root>
+    <comp-name>ericsson</comp-name>
+    <install-path>com.ericsson.oss.itpf.common.rhel8pythoncompat</install-path>
+    <publish_artifact>true</publish_artifact>
+    <media.category>common</media.category>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <version>2.2.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <copyright>${this.year} Ericsson AB. All rights reserved</copyright>
+          <description>${ericsson.rstate}</description>
+          <group>ERI-NMS</group>
+          <vendor>Ericsson AB</vendor>
+          <url>www.ericsson.com</url>
+          <provides>
+              <provide>python = 2.7</provide>
+              <provide>/usr/bin/python</provide>
+              <provide>python-requests</provide>
+              <provide>python-argparse</provide>
+              <provide>python-yaml</provide>
+              <provide>python-psycopg2</provide>
+              <provide>pexpect</provide>
+          </provides>
+          <requires>
+              <require>python3-requests</require>
+              <require>python3-pyyaml</require>
+              <require>python3-psycopg2</require>
+              <require>python3-pexpect</require>
+          </requires>
+
+          <name>${rpm.name}</name>
+          <targetVendor>redhat</targetVendor>
+          <targetOS>Linux</targetOS>
+          <copyright>${copyright}</copyright>
+      </configuration>
+  </plugin>
+    </plugins>
+  </build>
+</project>
